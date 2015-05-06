@@ -4,8 +4,11 @@ var Person = require("../models/models").Person;
 
 var peopleRouter = express.Router();
 
+//  "/api/people"
+
 peopleRouter.get("/", function(req, res){
-  Person.find({}).sort("name").exec(function(err, people){
+  // Person.find({}).sort("name").exec(function(err, people){
+  Person.find({}).sort({active:-1, name:1}).exec(function(err, people){
     res.send(people);
   }); 
 });
@@ -34,11 +37,11 @@ peopleRouter.post("/:token", authorize, function(req, res){
 });
 
 peopleRouter.post("/:id/:token", authorize, function(req, res){
-  Person.update({ _id: req.params.id } , { name: req.body.name, color: req.body.color }, function(err, result){
-    if(err){
+  //Person.update({ _id: req.params.id } , { name: req.body.name, color: req.body.color, active: req.body.active }, function(err, result){
+  Person.findByIdAndUpdate(req.params.id, req.body, function(err, result){
+    if (err){
       res.status(500).send(err); 
-    }
-    else{
+    } else {
       res.send(result); 
     }
   });

@@ -1,11 +1,8 @@
-<div class="alert alert-danger" ng-show="error">
-  {{ error }}
-</div>
+<!--msg-->
+<div class="alert alert-danger" ng-show="error">{{ error }}</div>
+<div class="alert alert-success" ng-show="success">{{ success }}</div>
 
-<div class="alert alert-success" ng-show="success">
-  {{ success }}
-</div>
-
+<!--insert person form-->
 <div class="row">
   <div class="col-md-6 col-md-offset-3 well">
     <form style="margin: 10px 0" ng-show="user.authenticated()">
@@ -13,15 +10,24 @@
         <label>Name</label>
         <input type="text" class="form-control" ng-model="inserting.name">
       </div>
+      <div class="form-group">
+          <label>Color</label>
+          <select class="form-control" ng-model="inserting.color">
+              <option value="blue">Blue</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+          </select>
+      </div>
       <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="inserting.active" /> Active
-        </label>
+        <!--<label><input type="checkbox" ng-model="inserting.active" class="active_chkbx" ng-click="unclick()" onclick="this.click();" /> Active</label>-->
+        <label><input type="checkbox" checked disabled /> Active</label>
       </div>
       <button class="btn btn-success" ng-click="insert()">Save</button>
     </form>
   </div>
 </div>
+
+<!-- person list -->
 <ul class="list-group">
   <li class="list-group-item" ng-repeat="person in people">
     <div class="row">
@@ -34,9 +40,9 @@
           {{ person.color }}
         </div>
       </div>
-      <div class="col-md-3 text-right">
+      <div class="col-md-3 text-right" ng-show="user.authenticated()">
         <button ng-click="edit(person)" class="btn btn-primary">Edit</button>
-        <button ng-click="delete(person)" class="btn btn-danger">Delete</button>
+        <button ng-click="delete(person)" ng-disabled="person.active" class="btn btn-danger">Delete</button>
       </div>
     </div>
   </li>

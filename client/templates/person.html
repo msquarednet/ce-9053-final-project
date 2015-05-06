@@ -1,6 +1,4 @@
-<div class="alert alert-danger" ng-show="error">
-  {{ error }} 
-</div>
+<div class="alert alert-danger" ng-show="error">{{ error }}</div>
 
 <form>
     <div class="form-group">
@@ -14,6 +12,9 @@
             <option value="yellow">Yellow</option>
             <option value="green">Green</option>
         </select>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" ng-model="person.active" />Active</label>
     </div>
     <button class="btn btn-success" ng-click="save()">Save</button>
 </form>

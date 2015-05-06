@@ -1,7 +1,9 @@
-angular.module("myWorld").controller("PeopleCtrl", function($scope, $location, NavSvc, PeopleSvc){
+angular.module("myWorld")
+.controller("PeopleCtrl", function($scope, $location, NavSvc, PeopleSvc){
   NavSvc.setTab("People");
   $scope.message = "I am the people control";
   $scope.user = PeopleSvc.user;
+
   $scope.delete = function(person){
     PeopleSvc.deletePerson(person).then(
       function(){
@@ -32,7 +34,7 @@ angular.module("myWorld").controller("PeopleCtrl", function($scope, $location, N
   };
   function activate(){
     $scope.inserting = {
-      active: false
+      active: true
     };
     PeopleSvc.getPeople().then(function(people){
       $scope.people = people;

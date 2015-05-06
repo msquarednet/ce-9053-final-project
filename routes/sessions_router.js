@@ -4,6 +4,8 @@ var User = require("../models/models").User;
 
 var app = express.Router();
 
+//  "/api/sessions"
+
 app.get("/:token", function(req, res){
   try{
     var decoded = jwt.decode(req.params.token, process.env.JWT_SECRET);
