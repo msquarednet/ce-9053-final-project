@@ -1,3 +1,4 @@
-- install jade and express
-- set up server
-- install bower modules
+App running at:
+
+https://ce-9053-final-project.herokuapp.com/
+
