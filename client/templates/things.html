@@ -1,3 +1,11 @@
 <div class="well">
   {{ message }}
 </div>
+
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="thing in thethings">
+        <a href="things/edit/{{thing._id}}">{{thing.name}}</a>
+    </i>
+</ul>
+
+<a href="" class="btn btn-primary" ng-click="NavSvc.go('/things/edit')">Enter New Thing</a>

@@ -12,10 +12,20 @@ angular.module("myWorld").config(function($routeProvider, $locationProvider){
       controller: "PersonCtrl",
       templateUrl: "/templates/person.html"
     })
+    
     .when("/things", {
       controller: "ThingsCtrl",
       templateUrl: "/templates/things.html"
     })
+    .when("/things/edit/", {
+      controller: "ThingsCtrl",   //change to ThingsEditCtrl?
+      templateUrl: "/templates/things-edit.html"
+    })
+    .when("/things/edit/:_id", {
+      controller: "ThingsCtrl",   //change to ThingsEditCtrl?
+      templateUrl: "/templates/things-edit.html"
+    })    
+    
     .when("/login", {
       controller: "LoginCtrl",
       templateUrl: "/templates/login.html"

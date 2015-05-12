@@ -17,21 +17,11 @@ angular.module("myWorld")
         }
       };
     })
-    .factory("NavSvc", function(){
+    .factory("NavSvc", function($location){
       var _tabs = [
-        {
-          title: "Home",
-          path: "/",
-          active: true
-        },
-        {
-          title: "People",
-          path: "/people"
-        },
-        {
-          title: "Things",
-          path: "/things"
-        }
+        {title: "Home",path: "/"},
+        {title: "People",path: "/people"},
+        {title: "Things",path: "/things"}
       ];
       return {
         tabs: _tabs,
@@ -42,6 +32,22 @@ angular.module("myWorld")
             else
               tab.active = false;
           });
+        },
+        path: $location.path(), //seem like this is only set (once) when singleton is created, and will get that value. :P
+        updateTabs: function () {
+          _tabs.forEach(function(t){
+            var urlpath = $location.path();
+            var tabpath = t.path
+            //console.log(urlpath+" :: "+tabpath);
+            //console.log(urlpath.indexOf(tabpath)+" :: "+urlpath.indexOf(t.label.toLowerCase()))
+            //if ($location.path().indexOf(t.path)!=-1) {t.active=1}
+            if ($location.path()===t.path) {t.active=1} 
+            else {t.active=0;}
+          });
+          //console.log(_tabs);
+        },
+        go: function(path) {
+          $location.path(path);
         }
       };
     });
