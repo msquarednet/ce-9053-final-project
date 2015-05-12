@@ -1,11 +1,21 @@
-<div class="well">
-  {{ message }}
-</div>
+<div class="well">{{ message }}</div>
 
-<ul class="list-group">
-    <li class="list-group-item" ng-repeat="thing in thethings">
-        <a href="things/edit/{{thing._id}}">{{thing.name}}</a>
-    </i>
-</ul>
+<table class="table table-striped table-bordered table-hover" ng-show="thethings.length>0">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="thing in thethings">
+      <td><a href="things/edit/{{thing._id}}">{{thing.name}}</a></td>
+      <td>{{thing.color}}</td>
+      <td>{{thing.desc}}</td>
+    </tr>
+  </tbody>
+</table>
+<p class="well" ng-show="thethings.length==0">No Things...</p>
 
 <a href="" class="btn btn-primary" ng-click="NavSvc.go('/things/edit')">Enter New Thing</a>
