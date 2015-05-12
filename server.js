@@ -24,3 +24,7 @@ app.use("/api/people", peopleRouter);
 app.use("/api/things", thingsRouter);
 
 app.listen(process.env.PORT);
+
+
+
+//    "start": "JWT_SECRET=bar CONN=mongodb://localhost/my_world nodemon server.js"
